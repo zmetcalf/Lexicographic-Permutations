@@ -1,8 +1,9 @@
 public class LexicographicPermutationsTest {
 
 	public static void main(String [] args) {
-		LexicographicPermutations lexi = new LexicographicPermutations(10);
-		lexi.createPermutationArray(10);
-		lexi.findPartPermutationArray(1000000);
+		LexicographicPermutations lexi = new LexicographicPermutations(3);
+		lexi.createPermutationArray(3);
+		for(int i = 1; i < 6; i++)		
+			System.out.println(lexi.findPartPermutationArray(i));
 	}
 }

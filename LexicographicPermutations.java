@@ -47,7 +47,7 @@ public class LexicographicPermutations {
 	private boolean checkLexiographic(long n) {
 		char[] checkChar; 
 		String tempString = "";
-		if(n != 45) 
+		if(calcDigitTotal(n) != 3)
 			return false;
 		if(Long.toString(n).length() < checkNum) { 
 			tempString = "0" + Long.toString(n);
@@ -56,13 +56,22 @@ public class LexicographicPermutations {
 		else {	
 			checkChar = (Long.toString(n)).toCharArray();			
 		}
-		for(int i : checkChar) {
-			for(int x : checkChar) {
-				if(i == x) {
-					return false;
-				}
-			}
+		Arrays.sort(checkChar);
+		for(int i = 0; i < checkChar.length - 1; i++) {
+			if(checkChar[i] == checkChar[i + 1])
+				return false;
 		}
 		return true;
+	}
+
+	private int calcDigitTotal(long n) {
+		int total = 0;
+
+		char[] charArray = Long.toString(n).toCharArray();
+
+		for(char x : charArray) {
+			total += (x - 48);
+		}
+		return total;
 	}
 }

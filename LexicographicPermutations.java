@@ -47,7 +47,7 @@ public class LexicographicPermutations {
 	private boolean checkLexiographic(long n) {
 		char[] checkChar; 
 		String tempString = "";
-		if(calcDigitTotal(n) != 3)
+		if(calcDigitTotal(n) != 45)
 			return false;
 
 		checkChar = setStringFormat(n).toCharArray();

@@ -33,7 +33,7 @@ public class LexicographicPermutations {
 		long x = (long) Math.pow(10, n);
 		for(long i = (long) Math.pow(10, (n - 2)); i < x; i++) {
 			if(checkLexiographic(i)) {
-				permutationArray[counter] = Long.toString(i);
+				permutationArray[counter] = setStringFormat(i);
 				counter++;
 			}
 		}
@@ -49,19 +49,27 @@ public class LexicographicPermutations {
 		String tempString = "";
 		if(calcDigitTotal(n) != 3)
 			return false;
-		if(Long.toString(n).length() < checkNum) { 
-			tempString = "0" + Long.toString(n);
-			checkChar = tempString.toCharArray();
-		}
-		else {	
-			checkChar = (Long.toString(n)).toCharArray();			
-		}
+
+		checkChar = setStringFormat(n).toCharArray();
 		Arrays.sort(checkChar);
+
 		for(int i = 0; i < checkChar.length - 1; i++) {
 			if(checkChar[i] == checkChar[i + 1])
 				return false;
 		}
 		return true;
+	}
+
+	private String setStringFormat(long n) {
+		String returnString = "";
+		
+		if(Long.toString(n).length() < checkNum) {
+			returnString = "0" + Long.toString(n);
+		}
+		else {
+			returnString = Long.toString(n);
+		}
+		return returnString;
 	}
 
 	private int calcDigitTotal(long n) {
